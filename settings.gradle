@@ -1,0 +1,5 @@
+rootProject.name = 'kong'
+
+include 'source'
+include 'target'
+
