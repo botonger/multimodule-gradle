@@ -5,6 +5,7 @@ HELP.md
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+**/resources/*.propeties
 
 ### STS ###
 **/.apt_generated
