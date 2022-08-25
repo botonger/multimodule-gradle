@@ -1,0 +1,13 @@
+server:
+  port: 9001
+
+url: http://localhost:9002
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+url: http://target:9002

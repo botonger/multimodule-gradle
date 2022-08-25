@@ -1,0 +1,32 @@
+version: '3.9'
+
+networks:
+  kong:
+
+services:
+  target:
+    container_name: target
+    image: openjdk:11
+    volumes:
+      - ./target/build/libs:/target
+    working_dir: /target
+    command: ["java", "-Dspring.profiles.active=dev", "-jar", "target-0.0.1-SNAPSHOT.jar"]
+    ports:
+      - "9002:9002"
+    networks:
+      - kong
+  source:
+    container_name: source
+    image: openjdk:11
+    volumes:
+      - ./source/build/libs:/source
+    working_dir: /source
+    environment:
+      - "SPRING_PROFILES_ACTIVE=dev"
+    command: [ "java", "-jar", "source-0.0.1-SNAPSHOT.jar" ]
+    ports:
+      - "9001:9001"
+    networks:
+      - kong
+    depends_on:
+      - target
